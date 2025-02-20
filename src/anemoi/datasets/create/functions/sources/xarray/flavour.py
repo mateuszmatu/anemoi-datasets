@@ -385,6 +385,9 @@ class DefaultCoordinateGuesser(CoordinateGuesser):
 
         if name == "vertical" and units == "hPa":
             return LevelCoordinate(c, "pl")
+       
+        if standard_name == 'ocean_s_coordinate_g2':
+            return LevelCoordinate(c, 's_rho')
 
     def _is_number(self, c, *, axis, name, long_name, standard_name, units):
         if name in ("realization", "number"):
