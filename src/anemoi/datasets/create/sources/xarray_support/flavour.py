@@ -762,6 +762,9 @@ class DefaultCoordinateGuesser(CoordinateGuesser):
         if attributes.name == "vertical" and attributes.units == "hPa":
             return LevelCoordinate(c, "pl")
 
+        if attribute.standard_name == 'ocean_s_coordinate_g2':
+            return LevelCoordinate(c, 's_rho')
+
         return None
 
     def _is_number(self, c: xr.DataArray, attributes: CoordinateAttributes) -> Optional[EnsembleCoordinate]:
